@@ -94,6 +94,25 @@
 
                                         </div>
 
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for=""></label><select name="category_id" id="" class="form-control mt-1">
+
+                                                    <option hidden>Select Category</option>
+                                                    @foreach($categories as $category)
+                                                        <option {{$post->category->id === $category->id ? 'selectd' : ''}} value="{{$category->id}}" >{{$category->name}}</option>
+
+
+                                                    @endforeach
+
+                                                </select>
+                                                @error('description')
+                                                <span style="color: red">{{$message}} </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+
 
                                         <div class="col-md-12 m-1">
 
@@ -104,7 +123,7 @@
 
                                     </div>
 
-
+                                </div>
                                 </div>
                         </form>
                     </div>

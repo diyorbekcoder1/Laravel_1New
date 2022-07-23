@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,10 +18,11 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-            'Firstname'=>$this->faker->firstNameMale,
-            'Lastname'=>$this->faker->lastName,
-            'description'=>$this->faker->text,
-            'image'=>$this->faker->imageUrl
+            'Firstname' => $this->faker->firstNameMale,
+            'Lastname' => $this->faker->lastName,
+            'description' => $this->faker->text,
+            'category_id' => Category::query()->inRandomOrder()->first()->id,
+            'image' => $this->faker->imageUrl
 
         ];
     }

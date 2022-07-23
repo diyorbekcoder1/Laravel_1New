@@ -28,6 +28,7 @@ class PostRequest extends FormRequest
             'Firstname' => ['string', 'required'],
             'Lastname' => ['required', 'string'],
             'description' => ['required', 'string'],
+            'category_id' => ['required', 'integer','exists:categories,id'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048']
 
 

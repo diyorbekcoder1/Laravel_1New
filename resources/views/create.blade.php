@@ -12,7 +12,7 @@
 <body style="background: black;">
 <div class="container">
 
-    <div class="row mt-5 ">
+    <div class="row mt-3 ">
         <div style="text-align: center;font-size: 40px;font-weight: bold; color: red"><p>Add information</p></div>
 
         <div class="col-lg-7 mx-auto">
@@ -77,7 +77,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="form_message">Description *</label>
+                                                <label class="mt-1" for="form_message">Description *</label>
                                                 <textarea id="form_message" name="description"
                                                           class="form-control @error('description') is-invalid @enderror"
                                                           placeholder="Write  description here." rows="4"
@@ -85,6 +85,23 @@
                                                     {{old('description')}}
                                                 </textarea
                                                 >
+                                                @error('description')
+                                                <span style="color: red">{{$message}} </span>
+                                                @enderror
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for=""></label><select name="category_id" id="" class="form-control mt-1">
+                                                    <option hidden>Select Category</option>
+
+                                                    @foreach($categories as $category)
+                                                        <option value="{{$category->id}}" >{{$category->name}}</option>
+
+                                                    @endforeach
+
+                                                </select>
                                                 @error('description')
                                                 <span style="color: red">{{$message}} </span>
                                                 @enderror
@@ -102,8 +119,8 @@
 
                                     </div>
 
-
                                 </div>
+                            </div>
                         </form>
                     </div>
                 </div>

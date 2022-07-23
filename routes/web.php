@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', [PostController::class, 'index'])->name('home');
-Route::resource('/post', PostController::class)->except('index');
+
+
+//Route::get('/', [PostController::class, 'index'])->name('home');
+//Route::resource('/post', PostController::class)->except('index');
+
+Route::get('/', [CategoryController::class, 'index'])->name('meni');
+Route::resource('/categories', CategoryController::class)->except('index');
+

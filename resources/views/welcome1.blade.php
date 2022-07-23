@@ -16,7 +16,7 @@
     <div class="row">
 
         <div class="card-header">
-            <a class="btn btn-primary" href="{{route('post.create')}}">Create</a>
+            <a class="btn btn-primary" href="{{route('categories.create')}}">Create</a>
 
         </div>
 
@@ -26,23 +26,21 @@
                 <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Firstname</th>
-                    <th scope="col">Lastname</th>
-                    <th scope="col">Description</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
+
                     <th scope="col">Image</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Category</th>
+
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                @if(isset($posts))
-                    @foreach($posts as $key => $post)
+                @if(isset($rains))
+                    @foreach($rains as $key => $post)
                         <tr>
                             <th scope="row">{{++$key}}</th>
-                            <td>{{$post->Firstname}}</td>
-                            <td>{{$post->Lastname}}</td>
-                            <td>{{substr($post->description,0,50)}}</td>
+                            <td>{{$post->name}}</td>
+                            <td>{{$post->title}}</td>
 
                             <td style="width: 50px; height: 50px; border-radius: 50%;"><img
                                     style="width: 50px; height: 50px; border-radius: 50%;"
@@ -50,18 +48,11 @@
                                     alt="">
                             </td>
 
-                            <td>
-                                <span style=" padding: 10px 20px 10px 20px; border-radius: 30px; " ;
-                                      class="badge bg-{{ $post->status === 1 ? 'success' : 'danger' }}">
-                                    {{$post->status === 1 ? 'active' : 'inactive'}}
-                                </span>
-                            </td>
 
-                            <td>{{$post->category->name}}</td>
                             <td>
-                                <a href="{{route('post.show', $post)}}" class="btn btn-warning">Show</a>
-                                <a href="{{route('post.edit', $post)}}" class="btn btn-primary">Edit</a>
-                                <form class="d-inline" action="{{route('post.destroy',$post)}}" method="post">
+                                <a href="{{route('categories.show', $post)}}" class="btn btn-warning">Show</a>
+                                <a href="{{route('categories.edit', $post)}}" class="btn btn-primary">Edit</a>
+                                <form class="d-inline" action="{{route('categories.destroy',$post)}}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
